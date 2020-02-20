@@ -11,13 +11,15 @@
 set_wd <- function(project, cloud = NULL) {
   path <-
     switch(Sys.info()[['sysname']], Windows = "C:/Users/", Darwin = "/Users/")
-  path <- paste0(path, Sys.info()[['user']])
+  path <- paste0(path, Sys.info()[['user']], "/")
   if ("odrive" %in% list.files(path)) {
-    path <- paste0(path, "/odrive/")
+    cat("odrive detected; setting parent...\n")
+    path <- paste0(path, "odrive/")
   }
   if (exists("cloud")) {
+    cat("setting cloud parent...\n")
     path <- paste0(path, cloud)
   }
-  path <- paste0(path, project)
+  path <- paste0(path, "/", project)
   setwd(path)
 }
