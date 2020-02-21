@@ -12,10 +12,12 @@ set_wd(project, cloud = NULL)
 \item{cloud}{The name of the cloud storage provider. If not set, the project is assumed to reside in your user folder.}
 }
 \description{
-This function allows you to set a working directory within a given cloud storage provider in your home directory.
+This function allows you to set a working directory within a given cloud storage folder in your home directory.
 }
 \examples{
-set_wd()
+set_wd("Platforms", "Box")
+set_wd("Misogyny", "Dropbox")
+set_wd("rcp-scraping")
 }
 \keyword{box,}
 \keyword{cloud}
