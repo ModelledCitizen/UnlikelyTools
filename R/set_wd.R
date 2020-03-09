@@ -9,18 +9,18 @@
 #' @examples
 #' set_wd("Platforms", "Box")
 #' set_wd("Misogyny", "Dropbox")
-#' set_wd("rcp-scraping")
+#' set_wd("project-harvest")
 
-set_wd <- function(project, cloud = NULL) {
+set_wd <- function(project, cloud = NULL, verbose = FALSE) {
   path <-
     switch(Sys.info()[["sysname"]], Windows = "C:/Users/", Darwin = "/Users/")
   path <- paste0(path, Sys.info()[["user"]], "/")
   if ("odrive" %in% list.files(path)) {
-    cat("odrive detected; setting parent...\n")
+    if (verbose) { cat("Detected odrive folder; setting parent directory...\n") }
     path <- paste0(path, "odrive/")
   }
   if (exists("cloud")) {
-    cat("setting cloud parent...\n")
+    if (verbose) { cat("Setting cloud parent directory...\n") }
     path <- paste0(path, cloud)
   }
   path <- paste0(path, "/", project)

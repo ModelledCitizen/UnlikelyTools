@@ -4,7 +4,7 @@
 \alias{set_wd}
 \title{Set Cloud-Aware Working Directory}
 \usage{
-set_wd(project, cloud = NULL)
+set_wd(project, cloud = NULL, verbose = FALSE)
 }
 \arguments{
 \item{project}{The name of the project directory. Must be set.}
@@ -17,7 +17,7 @@ This function allows you to set a working directory within a given cloud storage
 \examples{
 set_wd("Platforms", "Box")
 set_wd("Misogyny", "Dropbox")
-set_wd("rcp-scraping")
+set_wd("project-harvest")
 }
 \keyword{box,}
 \keyword{cloud}
