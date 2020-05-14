@@ -8,7 +8,7 @@ Authors@R:
            email = "david@unlikelyvolcano.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: R Tools used in UnlikelyVolcano scripts, reducing repetitive coding.
-License: All rights reserved.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0

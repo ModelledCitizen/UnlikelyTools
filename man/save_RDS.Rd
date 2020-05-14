@@ -27,8 +27,8 @@ save_RDS(
 This function appends the user's initials and the current date when saving to RDS.
 }
 \examples{
-save_initials("DA")
-save_RDS(object = ls(), filename = "datafile")
+\dontrun{save_initials("DA")}
+\dontrun{save_RDS(object = ls(), filename = "datafile")}
 }
 \keyword{RDS,}
 \keyword{date}

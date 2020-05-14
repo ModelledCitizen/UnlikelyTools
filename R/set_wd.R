@@ -4,12 +4,13 @@
 #'
 #' @param project The name of the project directory. Must be set.
 #' @param cloud The name of the cloud storage provider. If not set, the project is assumed to reside in your user folder.
+#' @param verbose Logical. Should status messages be displayed?
 #' @keywords working directory, cloud storage, box, dropbox, odrive
 #' @export
 #' @examples
-#' set_wd("Platforms", "Box")
-#' set_wd("Misogyny", "Dropbox")
-#' set_wd("project-harvest")
+#' \dontrun{set_wd("Platforms", "Box")}
+#' \dontrun{set_wd("Misogyny", "Dropbox")}
+#' \dontrun{set_wd("project-harvest")}
 
 set_wd <- function(project, cloud = NULL, verbose = FALSE) {
   switch(Sys.info()[["sysname"]],

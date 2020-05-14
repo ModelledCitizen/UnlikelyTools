@@ -10,8 +10,8 @@
 #' @keywords save, RDS, initials, date
 #' @export
 #' @examples
-#' save_initials("DA")
-#' save_RDS(object = ls(), filename = "datafile")
+#' \dontrun{save_initials("DA")}
+#' \dontrun{save_RDS(object = ls(), filename = "datafile")}
 
 save_RDS <-
   function(object,

@@ -8,7 +8,7 @@
 #' @keywords read, load, RDS, initials, date
 #' @export
 #' @examples
-#' read_RDS(filename = "datafile")
+#' \dontrun{read_RDS(filename = "datafile")}
 
 
 read_RDS <- function(filename,

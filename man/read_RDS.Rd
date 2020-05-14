@@ -17,7 +17,7 @@ read_RDS(filename, path = NULL, verbose = FALSE)
 This function reads the latest version of an RDS file saved by save_RDS.
 }
 \examples{
-read_RDS(filename = "datafile")
+\dontrun{read_RDS(filename = "datafile")}
 }
 \keyword{RDS,}
 \keyword{date}
