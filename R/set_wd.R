@@ -12,15 +12,32 @@
 #' set_wd("project-harvest")
 
 set_wd <- function(project, cloud = NULL, verbose = FALSE) {
-  path <-
-    switch(Sys.info()[["sysname"]], Windows = "C:/Users/", Darwin = "/Users/")
+  switch(Sys.info()[["sysname"]],
+         Windows = {
+           path <- "C:/Users/"
+           if (verbose) {
+             message("Starting with Windows root...")
+           }
+         },
+         Darwin = {
+           path <- "/Users/"
+           if (verbose) {
+             message("Starting with macOS root...")
+           }
+         },
+         Linux = {
+           path <- "/home/"
+           if (verbose) {
+             message("Starting with Linux root...")
+           }
+         })
   path <- paste0(path, Sys.info()[["user"]], "/")
   if (!is.null(cloud)) {
     if ("odrive" %in% list.files(path)) {
-      if (verbose) { cat("Detected odrive folder; adding to path...\n") }
+      if (verbose) { message("Detected odrive folder; adding to path...") }
       path <- paste0(path, "odrive/")
     }
-    if (verbose) { cat("Adding cloud provider to path...\n") }
+    if (verbose) { message("Adding cloud provider to path...") }
     path <- paste0(path, cloud)
   }
   path <- paste0(path, "/", project)
