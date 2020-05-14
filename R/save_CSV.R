@@ -1,19 +1,20 @@
-#' Save RDS With Initials and Date
+#' Save CSV With Initials and Date
 #'
-#' This function appends the user's initials and the current date when saving to RDS.
+#' This function appends the user's initials and the current date when saving to CSV.
 #'
 #' @param object The object in the R environment to save to a file.
 #' @param filename String. The base name for the file.
-#' @param path String. Where to save the file. If not set, checks for "Data" or "_data" in the working directory. Saves to working directory if data folders are not found.
+#' @param path String. Where to save the file. If not set, checks for "Tables" or "_tables" in the working directory. Saves to working directory if data folders are not found.
 #' @param initials String, or empty to retrieve from .Renviron.
 #' @param verbose Logical. Should status messages be displayed?
-#' @keywords save, RDS, initials, date
+#' @keywords save, CSV, initials, date
+#' @importFrom utils write.csv
 #' @export
 #' @examples
 #' \dontrun{save_initials("DA")}
-#' \dontrun{save_RDS(object = ls(), filename = "datafile")}
+#' \dontrun{save_CSV(object = ls(), filename = "datafile")}
 
-save_RDS <-
+save_CSV <-
   function(object,
            filename,
            path = NULL,
@@ -21,13 +22,13 @@ save_RDS <-
            verbose = FALSE) {
     # Detect path
     if (is.null(path)) {
-      if ("Data" %in% list.files()) {
-        path <- "Data"
+      if ("Tables" %in% list.files()) {
+        path <- "Tables"
         if (verbose) {
           message("Saving to Data.")
         }
-      } else if ("_data" %in% list.files()) {
-        path <- "_data"
+      } else if ("_tables" %in% list.files()) {
+        path <- "_tables"
         if (verbose) {
           message("Saving to _data.")
         }
@@ -55,6 +56,6 @@ save_RDS <-
     # Format date
     date <- format(Sys.Date(), "%m-%d-%Y")
     # Save object to path
-    loc <- paste0(path, filename, "-", date, "-", initials, ".RDS")
-    saveRDS(object = object, file = loc)
+    loc <- paste0(path, filename, "-", date, "-", initials, ".CSV")
+    write.csv(x = object, file = loc, row.names = F)
   }

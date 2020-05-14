@@ -1,28 +1,28 @@
-#' Read Latest Version of RDS Saved With Initials and Date
+#' Read Latest Version of CSV Saved With Initials and Date
 #'
-#' This function reads the latest version of an RDS file saved by save_RDS.
+#' This function reads the latest version of an RDS file saved by save_CSV
 #'
 #' @param filename String. The base name for the file.
-#' @param path String. Where to look the file. If not set, checks for "Data" or "_data" in the working directory. Reads from working directory if data folders are not found.
+#' @param path String. Where to look the file. If not set, checks for "Tables" or "_tables" in the working directory. Reads from working directory if data folders are not found.
 #' @param verbose Logical. Should status messages be displayed?
-#' @keywords read, load, RDS, initials, date
+#' @keywords read, load, CSV, initials, date
 #' @export
 #' @examples
-#' \dontrun{read_RDS(filename = "datafile")}
+#' \dontrun{read_CSV(filename = "datafile")}
 
 
-read_RDS <- function(filename,
+read_CSV <- function(filename,
                      path = NULL,
                      verbose = FALSE) {
   # Detect path
   if (is.null(path)) {
-    if ("Data" %in% list.files()) {
-      path <- "Data"
+    if ("Tables" %in% list.files()) {
+      path <- "Tables"
       if (verbose) {
         message("Reading from Data.")
       }
-    } else if ("_data" %in% list.files()) {
-      path <- "_data"
+    } else if ("_tables" %in% list.files()) {
+      path <- "_tables"
       if (verbose) {
         message("Reading from _data.")
       }
@@ -48,7 +48,7 @@ read_RDS <- function(filename,
   }
   # Identify most recent file
   fls <- list.files(path = path)
-  fls <- fls[grep("RDS", fls, fixed = T)]
+  fls <- fls[grep("CSV", fls, fixed = T)]
   fls <- fls[grep(filename, fls, fixed = T)]
   fl <-
     fls[which(file.mtime(paste0(path, fls)) == max(file.mtime(paste0(path, fls))))]
