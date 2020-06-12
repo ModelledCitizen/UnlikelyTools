@@ -17,7 +17,7 @@ save_tex(latex, file = NULL, landscape = FALSE)
 This function takes LaTeX output from Stargazer, texreg, xtable, etc. and saves it to an output file with the appropriate start and end notes.
 }
 \examples{
-data("mtcars")
+data("mtcars", envir = environment())
 tex <- stargazer::stargazer(mtcars)
 save_tex(tex)
 }

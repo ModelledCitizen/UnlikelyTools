@@ -8,13 +8,18 @@
 #' @keywords
 #' @export
 #' @examples
-#' data("mtcars")
+#' data("mtcars", envir = environment())
 #' tex <- stargazer::stargazer(mtcars)
 #' save_tex(tex)
 
 save_tex <- function(latex,
                      file = NULL,
                      landscape = FALSE) {
+  if ("xtable" %in% class(latex)) {
+    sink("/dev/null")
+    latex <- print(latex)
+    sink()
+  }
   start <-
     c(
       "\\documentclass{article}",
@@ -37,3 +42,4 @@ save_tex <- function(latex,
   }
   invisible(ltx)
 }
+

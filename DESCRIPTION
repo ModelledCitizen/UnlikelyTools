@@ -1,6 +1,6 @@
 Package: UnlikelyTools
 Title: UnlikelyVolcano Tools
-Version: 0.0.5.0
+Version: 0.0.5.1
 Authors@R: 
     person(given = "David",
            family = "Azizi",
@@ -8,7 +8,7 @@ Authors@R:
            email = "david@unlikelyvolcano.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: R Tools used in UnlikelyVolcano scripts, reducing repetitive coding.
-Suggests: stargazer
+Suggests: stargazer, xtable
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
