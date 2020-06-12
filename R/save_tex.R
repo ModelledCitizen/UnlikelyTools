@@ -16,7 +16,16 @@ save_tex <- function(latex,
                      file = NULL,
                      landscape = FALSE) {
   if ("xtable" %in% class(latex)) {
-    sink("/dev/null")
+    switch(Sys.info()[["sysname"]],
+           Darwin = {
+             sink("/dev/null")
+           },
+           Linux = {
+             sink("/dev/null")
+           },
+           Windows = {
+             sink("NUL")
+           })
     latex <- print(latex)
     sink()
   }
