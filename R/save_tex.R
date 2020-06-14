@@ -1,6 +1,6 @@
 #' Save LaTeX output to a renderable .tex document
 #'
-#' This function takes LaTeX output from Stargazer, texreg, xtable, etc. and saves it to an output file with the appropriate start and end notes.
+#' This function takes LaTeX output from stargazer, texreg, xtable, etc. and saves it to an output file with the appropriate start and end notes.
 #'
 #' @param latex Character. The latex output from another function.
 #' @param file Character. The (optional) file to save the output to.
