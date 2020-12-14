@@ -6,6 +6,7 @@
 #' @param path String. Where to look the file. If not set, checks for "Tables" or "_tables" in the working directory. Reads from working directory if data folders are not found.
 #' @param verbose Logical. Should status messages be displayed?
 #' @keywords read, load, CSV, initials, date
+#' @importFrom utils read.csv
 #' @export
 #' @examples
 #' \dontrun{read_CSV(filename = "datafile")}
@@ -19,17 +20,17 @@ read_CSV <- function(filename,
     if ("Tables" %in% list.files()) {
       path <- "Tables"
       if (verbose) {
-        message("Reading from Data.")
+        message("Reading from Tables.")
       }
     } else if ("_tables" %in% list.files()) {
       path <- "_tables"
       if (verbose) {
-        message("Reading from _data.")
+        message("Reading from _tables.")
       }
     } else {
       path <- ""
       if (verbose) {
-        message("Data folder not detected, reading from working directory.")
+        message("Tables folder not detected, reading from working directory.")
       }
     }
   }
@@ -54,5 +55,5 @@ read_CSV <- function(filename,
     fls[which(file.mtime(paste0(path, fls)) == max(file.mtime(paste0(path, fls))))]
   # Read file
   if (verbose) {message("Reading file ", fl, ".")}
-  readRDS(paste0(path, fl))
+  read.csv(paste0(path, fl))
 }

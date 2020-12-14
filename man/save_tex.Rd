@@ -14,7 +14,7 @@ save_tex(latex, file = NULL, landscape = FALSE)
 \item{landscape}{Logical. Should the document be saved as a PDF?}
 }
 \description{
-This function takes LaTeX output from Stargazer, texreg, xtable, etc. and saves it to an output file with the appropriate start and end notes.
+This function takes LaTeX output from stargazer, texreg, xtable, etc. and saves it to an output file with the appropriate start and end notes.
 }
 \examples{
 data("mtcars", envir = environment())
