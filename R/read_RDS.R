@@ -41,7 +41,7 @@ read_RDS <- function(filename,
     stop("Path folder not found in working directory.")
   }
   fls <- list.files(path = path)
-  fls <- fls[grep(".RDS", fls, ignore.case = T)]
+  fls <- fls[grep(".*\\.RDS", list.files(), ignore.case = T)]
   fls <- fls[grep(filename, fls, fixed = T)]
   fl <-
     fls[which(file.mtime(paste0(path, fls)) == max(file.mtime(paste0(path, fls))))]
