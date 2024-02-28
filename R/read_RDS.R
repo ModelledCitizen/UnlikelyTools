@@ -27,28 +27,21 @@ read_RDS <- function(filename,
         message("Reading from _data.")
       }
     } else {
-      path <- ""
+      path <- "."
       if (verbose) {
         message("Data folder not detected, reading from working directory.")
       }
     }
   }
   # Clean path
-  if (path != "") {
-    if (substr(path, nchar(path), nchar(path)) != "/") {
-      if (!path %in% list.files()) {
-        stop("Path folder not found in working directory.")
-      }
-      path <- paste0(path, "/")
-    } else {
-      if (!substr(path, 1, nchar(path) - 1) %in% list.files()) {
-        stop("Path folder not found in working directory.")
-      }
-    }
+  if (substr(path, nchar(path), nchar(path)) != "/") {
+    path <- paste0(path, "/")
   }
-  # Identify most recent file
+  if (path != "./" & !path %in% list.files()) {
+    stop("Path folder not found in working directory.")
+  }
   fls <- list.files(path = path)
-  fls <- fls[grep("RDS", fls, fixed = T)]
+  fls <- fls[grep(".RDS", fls, ignore.case = T)]
   fls <- fls[grep(filename, fls, fixed = T)]
   fl <-
     fls[which(file.mtime(paste0(path, fls)) == max(file.mtime(paste0(path, fls))))]

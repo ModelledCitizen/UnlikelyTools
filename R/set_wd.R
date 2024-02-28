@@ -34,12 +34,18 @@ set_wd <- function(project, cloud = NULL, verbose = FALSE) {
          })
   path <- paste0(path, Sys.info()[["user"]], "/")
   if (!is.null(cloud)) {
-    if ("odrive" %in% list.files(path)) {
-      if (verbose) { message("Detected odrive folder; adding to path...") }
-      path <- paste0(path, "odrive/")
+    if (cloud == "iCloud") {
+      if (verbose) { message("Using documents folder for iCloud sync...") }
+      path <- paste0(path, "Documents/")
     }
-    if (verbose) { message("Adding cloud provider to path...") }
-    path <- paste0(path, cloud)
+    if (cloud != "iCloud") {
+      if ("odrive" %in% list.files(path)) {
+        if (verbose) { message("Detected odrive folder; adding to path...") }
+        path <- paste0(path, "odrive/")
+      }
+      if (verbose) { message("Adding cloud provider to path...") }
+      path <- paste0(path, cloud)
+    }
   }
   path <- paste0(path, "/", project)
   setwd(path)
