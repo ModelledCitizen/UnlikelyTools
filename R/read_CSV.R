@@ -35,11 +35,11 @@ read_CSV <- function(filename,
     }
   }
   # Clean path
-  if (substr(path, nchar(path), nchar(path)) != "/") {
-    path <- paste0(path, "/")
-  }
-  if (path != "./" & !path %in% list.files()) {
+  if (path != "." & !path %in% list.files()) {
     stop("Path folder not found in working directory.")
+  }
+    if (substr(path, nchar(path), nchar(path)) != "/") {
+    path <- paste0(path, "/")
   }
   fls <- list.files(path = path)
   fls <- fls[grep(".*\\.CSV", list.files(), ignore.case = T)]

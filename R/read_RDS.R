@@ -34,11 +34,11 @@ read_RDS <- function(filename,
     }
   }
   # Clean path
+  if (path != "." & !path %in% list.files()) {
+    stop("Path folder not found in working directory.")
+  }
   if (substr(path, nchar(path), nchar(path)) != "/") {
     path <- paste0(path, "/")
-  }
-  if (path != "./" & !path %in% list.files()) {
-    stop("Path folder not found in working directory.")
   }
   fls <- list.files(path = path)
   fls <- fls[grep(".*\\.RDS", list.files(), ignore.case = T)]
