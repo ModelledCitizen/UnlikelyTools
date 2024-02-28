@@ -42,7 +42,7 @@ read_CSV <- function(filename,
     path <- paste0(path, "/")
   }
   fls <- list.files(path = path)
-  fls <- fls[grep(".*\\.CSV", list.files(), ignore.case = T)]
+  fls <- fls[grep(".*\\.CSV", fls, ignore.case = T)]
   fls <- fls[grep(filename, fls, fixed = T)]
   fl <-
     fls[which(file.mtime(paste0(path, fls)) == max(file.mtime(paste0(path, fls))))]
